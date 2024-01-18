@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tofsensorpanel/static/css/main.e6c13ad2.css",
+    "main.js": "/tofsensorpanel/static/js/main.baa890e7.js",
+    "static/js/787.255e83fc.chunk.js": "/tofsensorpanel/static/js/787.255e83fc.chunk.js",
+    "index.html": "/tofsensorpanel/index.html",
+    "main.e6c13ad2.css.map": "/tofsensorpanel/static/css/main.e6c13ad2.css.map",
+    "main.baa890e7.js.map": "/tofsensorpanel/static/js/main.baa890e7.js.map",
+    "787.255e83fc.chunk.js.map": "/tofsensorpanel/static/js/787.255e83fc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.baa890e7.js"
+  ]
+}
