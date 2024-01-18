@@ -92,7 +92,7 @@ const MyComponent = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            topic: '04:e9:e5:14:90:26/nfc',
+            topic: '04:e9:e5:14:90:26/react',
             message: message,
           }),
         });
