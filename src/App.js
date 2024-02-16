@@ -17,6 +17,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
+
 const TxPowerSelect = ({ txPower, handleTxPowerChange }) => {
   return (
     <TableRow>
@@ -55,6 +56,11 @@ const MyComponent = () => {
   const [error, setError] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  const [deviceId, setDeviceId] = React.useState('');
+
+  const handleDeviceIdChange = (event) => {
+    setDeviceId(event.target.value);
+  };
 
   const handleTxPowerChange = (event) => {
     setTxPower(event.target.value);
@@ -70,13 +76,14 @@ const MyComponent = () => {
 
   const handleUploadClick = async () => {
     // Validate that the input values are not empty
-    if (txPower !== '' && feet !== '' && bleInterval !== '') {
+    if (deviceId !== '' && txPower !== '' && feet !== '' && bleInterval !== '') {
       // Validate BLE interval
       const bleIntervalValue = parseInt(bleInterval);
-      if (bleIntervalValue < 10) {
-        setError('BLE Interval has to be above 10 seconds.');
+      if (bleIntervalValue < 3) {
+        setError('BLE Interval has to be above 3 seconds.');
         return;
       }
+      const topic = `${deviceId}/react`;
 
       // Set loading state
       setLoading(true);
@@ -92,7 +99,7 @@ const MyComponent = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            topic: '04:e9:e5:14:90:26/react',
+            topic: topic,
             message: message,
           }),
         });
@@ -143,6 +150,14 @@ const MyComponent = () => {
       <Paper elevation={3} sx={{ padding: '16px', width: '500px', textAlign: 'center' }}>
         <Table>
           <TableBody>
+          <TableRow>
+              <TableCell>
+                <Typography variant="subtitle1">Device ID</Typography>
+              </TableCell>
+              <TableCell>
+                <TextField label="Device ID" value={deviceId} onChange={handleDeviceIdChange} fullWidth />
+              </TableCell>
+            </TableRow>
             <TxPowerSelect txPower={txPower} handleTxPowerChange={handleTxPowerChange} />
             <TableRow>
               <TableCell>
